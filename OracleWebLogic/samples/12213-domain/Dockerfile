@@ -34,6 +34,10 @@ ENV ADMIN_HOST="wlsadmin" \
     CONFIG_JVM_ARGS="-Dweblogic.security.SSL.ignoreHostnameVerification=true"  \
     PATH=$PATH:/u01/oracle/oracle_common/common/bin:/u01/oracle/wlserver/common/bin:/u01/oracle/user_projects/domains/${DOMAIN_NAME:-base_domain}/bin:/u01/oracle
 
+# ARG variables
+# ------------------------------------------------------------
+ARG ADMIN_PASSWORD_ARG
+
 # Domain and Server environment variables
 # ------------------------------------------------------------
 ENV DOMAIN_NAME="${DOMAIN_NAME:-base_domain}" \
@@ -43,7 +47,7 @@ ENV DOMAIN_NAME="${DOMAIN_NAME:-base_domain}" \
     ADMIN_NAME="${ADMIN_NAME:-AdminServer}" \
     MS_NAME="${MS_NAME:-""}" \
     NM_NAME="${NM_NAME:-""}" \
-    ADMIN_PASSWORD="${ADMIN_PASSWORD:-""}" \
+    ADMIN_PASSWORD="${ADMIN_PASSWORD_ARG}" \
     CLUSTER_NAME="${CLUSTER_NAME:-DockerCluster}" \
     DEBUG_FLAG=true \
     PRODUCTION_MODE=dev 
